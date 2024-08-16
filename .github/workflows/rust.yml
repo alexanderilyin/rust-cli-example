@@ -1,6 +1,7 @@
 name: Rust
 
 on:
+  workflow_dispatch:
   push:
     branches: [ "main" ]
   pull_request:
@@ -16,6 +17,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+    - name: Format
+      run: cargo format
     - name: Build
       run: cargo build --verbose
     - name: Run tests
